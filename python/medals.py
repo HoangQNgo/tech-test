@@ -17,10 +17,33 @@ medalResults = [
     }
 ]
 
+def getScore(position):
+    score=0
+    if position=="1":
+        score=3
+    elif position=="2":
+        score=2
+    elif position=="3":
+        score=1
+    return score
+
 def createMedalTable(results):
+    myResult={}
+
+    for result in results:
+        print(result["podium"])
+        for position in result["podium"]:
+            score=position.split(".")
+
+            points=getScore(score[0])
+
+            if score[1] in myResult:
+                myResult[score[1]]=myResult[score[1]]+points
+            else:
+                myResult[score[1]]=points
     # Use the results object above to create a medal table
     # The winner gets 3 points, second place 2 points and third place 1 point
-    return
+    return myResult
 
 
 def test_function():
@@ -38,3 +61,9 @@ def test_function():
         "Belarus": 1,
     }
     assert medalTable == expectedTable
+
+def main():
+    createMedalTable(medalResults) 
+
+if __name__ == "__main__":
+    main()
