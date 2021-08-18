@@ -61,9 +61,3 @@ def test_function():
         "Belarus": 1,
     }
     assert medalTable == expectedTable
-
-def main():
-    createMedalTable(medalResults) 
-
-if __name__ == "__main__":
-    main()
